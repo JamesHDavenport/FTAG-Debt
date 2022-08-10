@@ -51,7 +51,7 @@ An alternative approach might be on the lines of ``if your MVP isn't secure by d
 
 ALS wrote this.
 \begin{quote}
-I prefer that title, but I also think we should expand into the psychology of bad short-term decision making (I'm just going to base64 encode this password for now... after all it's just a demo environment for now).  
+I prefer that title, but I also think we should expand into the psychology of bad short-term decision making (I'm just going to base64 encode this password for now... after all it's just a demo environment for now).
 
 We should also acknowledge the reality that making a SaaS system secure to auditable standards can actually cost more than developing such a system in the first place. For example, most security standards will ask for cryptographic key rotation policies and procedures to be defined and implemented.  Why do that if you only have 3 months of funding left before you have to shutdown your startup?
 
@@ -71,7 +71,7 @@ Anything i developed in a context, and as that context changes the debt occurs. 
 \end{quote}
 \def\r{$\rightarrow$}
 \section{Introduction}
-A recent security webinar \cite{MalwareBytes2022b} claimed that the problem was the ``Mountain of Technical Debt'', or 
+A recent security webinar \cite{MalwareBytes2022b} claimed that the problem was the ``Mountain of Technical Debt'', or
 \begin{quote}
 The thread that linked many of the most important cybersecurity events of 2021 was old, insecure code, but we can't patch our way to security.
 \end{quote}
@@ -101,7 +101,7 @@ Microsoft&CVE-2020-1472&elevation of privilege\cr
 Much software that we have bought in, either as such or as part of a package such as a VPN system, contains vulnerabilities.
 Consider Table \ref{tab:CISA1}, and the warning that goes with it:
 \begin{quote}
-Malicious cyber actors will most likely continue to use older known vulnerabilities, such as CVE-2017-11882 affecting Microsoft Office, as long as they remain effective and systems remain unpatched. Adversaries’ use of known vulnerabilities complicates attribution, reduces costs, and minimizes risk because they are not investing in developing a zero-day exploit for their exclusive use, which they risk losing if it becomes known. 
+Malicious cyber actors will most likely continue to use older known vulnerabilities, such as CVE-2017-11882 affecting Microsoft Office, as long as they remain effective and systems remain unpatched. Adversaries’ use of known vulnerabilities complicates attribution, reduces costs, and minimizes risk because they are not investing in developing a zero-day exploit for their exclusive use, which they risk losing if it becomes known.
 \end{quote}
 There were 20,175 new vulnerabilities published (i.e. allocated a CVE number) in 2021, and a total of 166,938 over the last ten years. For any reasonably large organisation, just keeping up with patches can be a major task.
 \par
@@ -113,16 +113,25 @@ A standard definition of ``Minimum Viable Product'' is this \cite{BL2016a}.
 \begin{quote}
 Eric Ries, pioneer of the Lean Startup movement, describes a minimum viable product as: ``[the] version of a new product which allows a team to collect the maximum amount of validated learning about customers with the least effort''.
 \end{quote}
-More cynically (or possibly realistically) is this \cite{Kamps2022a}: 
+More cynically (or possibly realistically) is this \cite{Kamps2022a}:
 \begin{quote}
 an MVP is the smallest amount of work you can do to confirm or dispel your hypothesis.
 \end{quote}
 That article goes on to quote Eric Ries (\url{https://techcrunch.com/2011/10/19/dropbox-minimal-viable-product/}) as describing Dropbox's initial MPV (a video) as the most powerful MVP: it persuaded funders to fund Dropbox.
 \par
-Of course, the point is that these MVPs fufil the definitions above, but are \emph{not} capable of being extended into true viable products, and hence are not viable products in the usual sense of the phrase.
+Of course, the point is that these MVPs fulfil the definitions above, but are \emph{not} capable of being extended into true viable products, and hence are not viable products in the usual sense of the phrase. An MVP that is insecure will still provide validated learning about customers, but will not usually provide validated learning about adversaries.
+\par
+Another, similar problem, is that often an MVP is designed with a small number of customers in mind - perhaps investors, or friendly clients. It is usually possible to rely in this case on security-by-obscurity - that is, a little-known product or service is unlikely to be targeted by adversaries.
+\section{The Runway}
+For the last decade or two, innovation in the technology sector has largely been driven by startups funded by venture capital. Startups get seed funding, usually to get an MVP ready and their first revenue.  Then they get a series of other tranches of funding known as Series A, B, C et cetera.
+\par
+The survival of the startup depends on achieving targets to get their next round of funding (usually related to revenue). In between each milestone there is normally a series of sprints, each dedicated to adding feature increments to the product. The survival of the company, the employees and the product depends on delivering enough valuable features in order to win the next customer.
+\par
+While sometimes there are security features that customers want, especially enterprise customers, the technical debt incurred during the MVP and initial sprints is not usually exposed to customers. For example, that 3rd party dependency the developers used in the MVP has had recent security vulnerabilities reported - unless someone is independently auditing the code base, no customer is going to know. That is the essence of technical security debt.
+\par
 \section{Examples}
 \begin{example}[Aethon Health Robots]
-\rm 
+\rm
 There are apparently\footnote{Oddly, the newest item on the company's website is a holding statement ( \url{https://aethon.com/aethon-statement-on-cyber-security-report/}) about this incident.} thousands of these robots operating in hundreds of hospitals in North America, Europe and Asia. Cynerio found five serious issues with these, the most serious being CVE-2022-1070, a 9.8 vulnerability described as
 \begin{quote}
 The product does not adequately verify
@@ -144,7 +153,7 @@ located in the JavaScript that was running in the browser of the user connected 
 that all security measures in place for these devices could be bypassed, and that every action Cynerio
 researchers subsequently tested was not validated or checked by the system.
 \end{quote}
-So what Aethon had was a viable product in the sense that it could impress potential purchasers, and would demonstrate apparent security features in that it would refuse naive unauthorised commands, but wasn't actually secure, and, given the description above, could not easily be made secure.  Though it was stated that the vulnerabilities have been patched, the changes were likely more than ``patches'', and indede required firmware and operating system updates. 
+So what Aethon had was a viable product in the sense that it could impress potential purchasers, and would demonstrate apparent security features in that it would refuse naive unauthorised commands, but wasn't actually secure, and, given the description above, could not easily be made secure.  Though it was stated that the vulnerabilities have been patched, the changes were likely more than ``patches'', and indede required firmware and operating system updates.
 \par
 See the journalistic article in \cite{Davis2022i}, and the technical description in \cite{Cynerio2022a}.
 \end{example}
@@ -153,7 +162,7 @@ See the journalistic article in \cite{Davis2022i}, and the technical description
 \cite{OConnoretal2019a} indicate that the design of IoT devices, especially those with a security function, may be sufficient for a minimal viable product, but be intrinsically insecure. Logically, and all to often in the implementation, the system is divided into ``always-responsive'' and the ``on-demand'' subsystems. By slectively suppressing (e.g. at the home router) the ``on-demand'' component, the user can be lulled into thinking that the device is working but has nothing to report.
 \end{example}
 \begin{example}[Ever Surf web wallets]\rm
-These wallets for the Everscale blockchain ecosystem were withdrawn (see \cite{Greig2022r}) after Check Point research found a problem \cite{CheckPoint2022d}.  The ``salt'' on the web version was always `\verb+sha256("unknown")+' and thus failed the fundamental requirement of salts. 
+These wallets for the Everscale blockchain ecosystem were withdrawn (see \cite{Greig2022r}) after Check Point research found a problem \cite{CheckPoint2022d}.  The ``salt'' on the web version was always `\verb+sha256("unknown")+' and thus failed the fundamental requirement of salts.
 \par
 Everscale noted that the web version of Ever Surf was ``an experimental solution'' that was helpful in the initial stages of the platform’s development, i.e. an MVP. But it was a false MVP< in that it could not be extended into a product. Following \cite{CheckPoint2022d}, Everscale said ``Our web version cannot provide a secure use of password-based KDF because of an inability to provide a unique salt such as device ID for that platform''.
 \par
@@ -170,7 +179,7 @@ To make matters worse, ``The company added that they don't know how many people 
 \item[A]
 \end{description}
 \begin{enumerate}
-\item 
+\item
 \end{enumerate}
 \begin{quote}
 \end{quote}
@@ -192,7 +201,7 @@ To make matters worse, ``The company added that they don't know how many people 
 \item[Monitoring]
 \end{description}
 \begin{enumerate}
-\item 
+\item
 \end{enumerate}
 \begin{quote}
 \end{quote}
