@@ -1,0 +1,105 @@
+\begin{thebibliography}{{DHS}22}
+
+\bibitem[{Bri}16]{BL2016a}
+{British Library}.
+\newblock {How to define a minimum viable product}.
+\newblock
+  \url{https://www.bl.uk/business-and-ip-centre/articles/how-to-define-a-minimum-viable-product},
+  2016.
+
+\bibitem[{Che}22]{CheckPoint2022d}
+{Check Point (Alexey Bukhteyev)}.
+\newblock {Check Point Research detects vulnerability in the Everscale
+  blockchain wallet, preventing cryptocurrency theft}.
+\newblock
+  \url{https://research.checkpoint.com/2022/check-point-research-detects-vulnerability-in-the-everscale-blockchain-wallet-preventing-cryptocurrency-theft/},
+  2022.
+
+\bibitem[{Con}21]{CISQ2021a}
+{Consortium for Information and Software Quality$^{\rm TM}$ (CISQ$^{\rm TM}$)}.
+\newblock {The Cost of Poor Software Quality in the US: A 2020 Report}.
+\newblock \url{https://www.it-cisq.org/pdf/CPSQ-2020-report.pdf}, 2021.
+
+\bibitem[Cyn22]{Cynerio2022a}
+Cynerio.
+\newblock {JekyllBot:5 Command Center What You Need to Know about JekyllBot:5
+  Vulnerabilities for Aethon TUG Autonomous Robots}.
+\newblock \url{https://www.cynerio.com/jekyllbot-5-command-center}, 2022.
+
+\bibitem[Dav22]{Davis2022i}
+J.~Davis.
+\newblock {5 critical zero-days found in Aethon TUG smart robots used in global
+  hospitals}.
+\newblock
+  \url{https://www.scmagazine.com/analysis/device-security/5-critical-zero-days-found-in-aethon-tug-smart-robots-used-in-global-hospitals},
+  2022.
+
+\bibitem[{DHS}21]{CISA2021h}
+{DHS Cybersecurity and Infrastructure Security Agency}.
+\newblock {Alert (AA21-209A) Top Routinely Exploited Vulnerabilities}.
+\newblock \url{https://www.cisa.gov/uscert/ncas/alerts/aa21-209a}, 2021.
+
+\bibitem[{DHS}22]{CISA2022b}
+{DHS Cybersecurity and Infrastructure Security Agency and peers}.
+\newblock {Alert (AA22-117A): 2021 Top Routinely Exploited Vulnerabilities}.
+\newblock \url{https://www.cisa.gov/uscert/ncas/alerts/aa22-117a}, 2022.
+
+\bibitem[Gre22]{Greig2022r}
+J.~Greig.
+\newblock {Everscale blockchain wallet shutters web version after vulnerability
+  found}.
+\newblock
+  \url{https://therecord.media/everscale-blockchain-wallet-shutters-web-version-after-vulnerability-found/},
+  2022.
+
+\bibitem[GW13]{GeerWysopal2013a}
+D.~Geer and C.~Wysopal.
+\newblock {For Good Measure: Security Debt}.
+\newblock {\em ;login:}, 38(4):62--64, 2013.
+\newblock URL:
+  \url{https://www.usenix.org/system/files/login/articles/13_geer_62-64_online.pdf}.
+
+\bibitem[Hug21]{Hughes2021v}
+O.~Hughes.
+\newblock {Developers: These botched software rollouts are costing businesses
+  billions}.
+\newblock
+  \url{https://www.techrepublic.com/article/developers-these-botched-software-rollouts-are-costing-businesses-billions/},
+  2021.
+
+\bibitem[Kam22]{Kamps2022a}
+H.J. Kamps.
+\newblock {Your MVP is neither minimal, viable nor a product}.
+\newblock \url{https://techcrunch.com/2022/05/03/your-mvp-is-not/}, 2022.
+
+\bibitem[Mal22]{MalwareBytes2022b}
+Malwarebytes.
+\newblock {Understanding the Malwarebytes 2022 Threat Review}.
+\newblock Webinar April 12, 2022.
+\newblock URL:
+  \url{https://go.malwarebytes.com/EMEA_Threat-Intel-Webinar_0.3On-Demand.html}.
+
+\bibitem[{Nat}16]{NIST2016d}
+{National Institute for Standards and Technology (Paul E. Black and Lee Badger
+  and Barbara Guttman and Elizabeth Fong)}.
+\newblock {Dramatically Reducing Software Vulnerabilities}.
+\newblock \url{https://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8151.pdf},
+  2016.
+
+\bibitem[OER19]{OConnoretal2019a}
+T.J. O'Connor, W.~Enck, and B.~Reaves.
+\newblock {Blinded and Confused: Uncovering Systemic Flaws in Device Telemetry
+  for Smart-Home Internet of Things}.
+\newblock In {\em Proceedings of the 12th Conference on Security and Privacy in
+  Wireless and Mobile Networks}, pages 140--150, 2019.
+
+\bibitem[WAC10]{Woodcocketal2010a}
+Jim Woodcock, Emine~G{\"o}k{\c{c}}e Aydal, and Rod Chapman.
+\newblock {The Tokeneer Experiments}.
+\newblock In A.W. Roscoe, Cliff~B. Jones, and Kenneth~R. Wood, editors, {\em
+  {Reflections on the Work of C.A.R. Hoare}}, pages 405--430, London, 2010.
+  Springer.
+\newblock \href {https://doi.org/10.1007/978-1-84882-912-1_17}
+  {\path{doi:10.1007/978-1-84882-912-1_17}}.
+
+\end{thebibliography}

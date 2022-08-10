@@ -1,0 +1,198 @@
+\font\manual=manfnt
+\def\dbend{{\manual\char127}}
+\def\eqq{{\buildrel?\over=}}
+\def\C{\mathbf{ C}}
+\def\N{\mathbf{ N}}
+\def\Q{\mathbf{ Q}}
+\def\R{\mathbf{ R}}
+\def\Z{\mathbf{Z}}
+\def\F{\mathbf{F}}
+\def\softO{\tilde{\cal O}}
+\def\O{{\cal O}}
+%\def\N{{\bf N}}
+%\def\Q{{\bf Q}}
+%\def\R{{\bf R}}
+%\def\Z{{\bf Z}}
+\def\action#1{\hfil\rlap{\bf#1}\break}
+\def\pcite#1{[#1]}
+\def\RootOf{\mathop{\rm RootOf}\nolimits}
+\def\r#1#2{``#1''$\rightarrow$``#2''}
+\documentclass{article}
+\bibliographystyle{alphaurl}
+\usepackage[hyphens]{url}
+%\usepackage{enumitem}
+\usepackage{pdfpages}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{combelow}
+\usepackage[show]{ed}
+\usepackage{graphicx}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{notation}{Notation}
+\newtheorem{example}{Example}
+\newtheorem{problem}{Problem}
+\def\decision#1{\par{\bf #1}}
+\def\action#1{\hfil\rlap{\bf#1}\break}
+%\url{https://assessment.bath.ac.uk/admin#grading/overview/78727640}
+\pagestyle{empty}
+\begin{document}
+\author{Notes by J.H.Davenport}
+\title{Are Cybersecurity Problems a Manifestation of Technical Debt}
+\date{9 August 2022}
+\maketitle
+\section{Preamble}
+Thanks to FTAG colleagues who commented on the previous version (the rest of this paper).
+It seems that I haven't quite hit the mark here.
+An alternative approach might be on the lines of ``if your MVP isn't secure by design, then don't extend it into the actual product''. Does this make more sense?
+
+ALS wrote this.
+\begin{quote}
+I prefer that title, but I also think we should expand into the psychology of bad short-term decision making (I'm just going to base64 encode this password for now... after all it's just a demo environment for now).  
+
+We should also acknowledge the reality that making a SaaS system secure to auditable standards can actually cost more than developing such a system in the first place. For example, most security standards will ask for cryptographic key rotation policies and procedures to be defined and implemented.  Why do that if you only have 3 months of funding left before you have to shutdown your startup?
+
+\end{quote}
+Mark Josephs wrote this.
+\begin{quote}
+Yes, James, it might be better on those lines. The usual way to express this is that security needs to be built in, not bolted on. It is a point that people have been making for about 20 years; see the books, articles and talks of Gray McGraw, for example. Note that implementing security on the client (which can be bypassed) is one of the standard examples of a design flaw, as is failure to authenticate.
+
+Unfortunately, the article doesn’t appear to be saying anything interesting about ``technical debt''.
+
+\end{quote}
+Alan Brown:
+\begin{quote}
+Anything i developed in a context, and as that context changes the debt occurs. There's a great tendency now just to release code. Which is fine if this code is throw-away.
+\end{quote}
+\begin{quote}
+\end{quote}
+\def\r{$\rightarrow$}
+\section{Introduction}
+A recent security webinar \cite{MalwareBytes2022b} claimed that the problem was the ``Mountain of Technical Debt'', or 
+\begin{quote}
+The thread that linked many of the most important cybersecurity events of 2021 was old, insecure code, but we can't patch our way to security.
+\end{quote}
+This is not a new thought: see for example \cite{GeerWysopal2013a}.
+\section{Third-Party Vulnerabilities}
+\begin{table}
+\caption{Top Routinely Exploited CVEs in 2020: \cite[Table 1]{CISA2021h}.\label{tab:CISA1}}
+\begin{tabular}{lll}
+\bf Vendor&\bf CVE\bf &Type\cr
+Citrix&CVE-2019-19781&arbitrary code execution\cr
+Pulse&CVE 2019-11510&arbitrary file reading\cr
+Fortinet&CVE 2018-13379&path traversal\cr
+F5- Big IP&CVE 2020-5902&remote code execution (RCE)\cr
+MobileIron&CVE 2020-15505&RCE\cr
+Microsoft&CVE-2017-11882&RCE\cr
+Atlassian&CVE-2019-11580&RCE\cr
+Drupal&CVE-2018-7600&RCE\cr
+Telerik&CVE 2019-18935&RCE\cr
+Microsoft&CVE-2019-0604&RCE\cr
+Microsoft&CVE-2020-0787&elevation of privilege\cr
+Microsoft&CVE-2020-1472&elevation of privilege\cr
+\end{tabular}
+\par
+\quad 4$\times$2020; 4$\times$2019; 2$\times$2018; 2$\times$2017.
+\end{table}
+\par
+Much software that we have bought in, either as such or as part of a package such as a VPN system, contains vulnerabilities.
+Consider Table \ref{tab:CISA1}, and the warning that goes with it:
+\begin{quote}
+Malicious cyber actors will most likely continue to use older known vulnerabilities, such as CVE-2017-11882 affecting Microsoft Office, as long as they remain effective and systems remain unpatched. Adversaries’ use of known vulnerabilities complicates attribution, reduces costs, and minimizes risk because they are not investing in developing a zero-day exploit for their exclusive use, which they risk losing if it becomes known. 
+\end{quote}
+There were 20,175 new vulnerabilities published (i.e. allocated a CVE number) in 2021, and a total of 166,938 over the last ten years. For any reasonably large organisation, just keeping up with patches can be a major task.
+\par
+It is tempting to think that things have improved, since the corresponding table (\cite[Table 1]{CISA2022b}) for 2021 shows 11$\times$2021, 2$\times$2020, 1$\times$2019 and 1$\times$2018. But in fact the 11$\times$2021 are really only 6$\times$2021, as ProxyLogon and ProxyShell were multiple CVEs. Sadly, CVE-2018-13379 (Path traversal in Fortinet software) and 2020-1472 (Microsoft Netlogon Remote Protocol elevation of privilege) appear in both lists.
+\section{Our Own Vulnerabilities}
+Even if we are not primarily a software house, we will often have in-house or bespoke external software. This too may well contain vulnerabilities.
+\section{The MVP trap}
+A standard definition of ``Minimum Viable Product'' is this \cite{BL2016a}.
+\begin{quote}
+Eric Ries, pioneer of the Lean Startup movement, describes a minimum viable product as: ``[the] version of a new product which allows a team to collect the maximum amount of validated learning about customers with the least effort''.
+\end{quote}
+More cynically (or possibly realistically) is this \cite{Kamps2022a}: 
+\begin{quote}
+an MVP is the smallest amount of work you can do to confirm or dispel your hypothesis.
+\end{quote}
+That article goes on to quote Eric Ries (\url{https://techcrunch.com/2011/10/19/dropbox-minimal-viable-product/}) as describing Dropbox's initial MPV (a video) as the most powerful MVP: it persuaded funders to fund Dropbox.
+\par
+Of course, the point is that these MVPs fufil the definitions above, but are \emph{not} capable of being extended into true viable products, and hence are not viable products in the usual sense of the phrase.
+\section{Examples}
+\begin{example}[Aethon Health Robots]
+\rm 
+There are apparently\footnote{Oddly, the newest item on the company's website is a holding statement ( \url{https://aethon.com/aethon-statement-on-cyber-security-report/}) about this incident.} thousands of these robots operating in hundreds of hospitals in North America, Europe and Asia. Cynerio found five serious issues with these, the most serious being CVE-2022-1070, a 9.8 vulnerability described as
+\begin{quote}
+The product does not adequately verify
+the identity of actors at both ends of a
+communication channel, or does not adequately
+ensure the integrity of the channel, in a way
+that allows the channel to be accessed or
+influenced by an actor that is not an endpoint.
+\end{quote}
+This means that ``An unauthenticated attacker can
+connect to the TUG Home Base
+Server websocket to take control
+of TUG robots''.
+\par
+Cynerio  describes the root cause as follows.
+\begin{quote}
+The security components underpinning Aethon TUG devices were
+located in the JavaScript that was running in the browser of the user connected to their portal. This meant
+that all security measures in place for these devices could be bypassed, and that every action Cynerio
+researchers subsequently tested was not validated or checked by the system.
+\end{quote}
+So what Aethon had was a viable product in the sense that it could impress potential purchasers, and would demonstrate apparent security features in that it would refuse naive unauthorised commands, but wasn't actually secure, and, given the description above, could not easily be made secure.  Though it was stated that the vulnerabilities have been patched, the changes were likely more than ``patches'', and indede required firmware and operating system updates. 
+\par
+See the journalistic article in \cite{Davis2022i}, and the technical description in \cite{Cynerio2022a}.
+\end{example}
+\begin{example}[IoT Devices]
+\rm
+\cite{OConnoretal2019a} indicate that the design of IoT devices, especially those with a security function, may be sufficient for a minimal viable product, but be intrinsically insecure. Logically, and all to often in the implementation, the system is divided into ``always-responsive'' and the ``on-demand'' subsystems. By slectively suppressing (e.g. at the home router) the ``on-demand'' component, the user can be lulled into thinking that the device is working but has nothing to report.
+\end{example}
+\begin{example}[Ever Surf web wallets]\rm
+These wallets for the Everscale blockchain ecosystem were withdrawn (see \cite{Greig2022r}) after Check Point research found a problem \cite{CheckPoint2022d}.  The ``salt'' on the web version was always `\verb+sha256("unknown")+' and thus failed the fundamental requirement of salts. 
+\par
+Everscale noted that the web version of Ever Surf was ``an experimental solution'' that was helpful in the initial stages of the platform’s development, i.e. an MVP. But it was a false MVP< in that it could not be extended into a product. Following \cite{CheckPoint2022d}, Everscale said ``Our web version cannot provide a secure use of password-based KDF because of an inability to provide a unique salt such as device ID for that platform''.
+\par
+To make matters worse, ``The company added that they don't know how many people use the web version so they are releasing information publicly to make sure no one's funds are at risk''.
+\end{example}
+\section{To be integrated}
+\cite{Hughes2021v,CISQ2021a,NIST2016d}
+\cite{Woodcocketal2010a}
+\bibliography{../../../jhd}
+\end{document}
+\section{}
+\begin{description}
+\item[Q]
+\item[A]
+\end{description}
+\begin{enumerate}
+\item 
+\end{enumerate}
+\begin{quote}
+\end{quote}
+\begin{itemize}
+\item
+\end{itemize}
+\begin{example}
+\end{example}
+\begin{definition}
+\end{definition}
+\begin{theorem}
+\end{theorem}
+\begin{description}
+\item[Theme 1]
+\item[Theme 2]
+\item[Theme 3]
+\item[Theme 5]
+\item[Theme 6]
+\item[Monitoring]
+\end{description}
+\begin{enumerate}
+\item 
+\end{enumerate}
+\begin{quote}
+\end{quote}
